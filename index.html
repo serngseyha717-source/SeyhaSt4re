@@ -1,10 +1,784 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>My Website</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seyha Anime KH</title>
+
+<style>
+:root{
+    --bg:#08080c;
+    --card:#12121a;
+    --card2:#181820;
+    --purple:#9b4dff;
+    --purple2:#6d28d9;
+    --text:#fff;
+    --muted:#92929f;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+/* NAVBAR */
+nav{
+    height:65px;
+    background:#101016;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 6%;
+    position:sticky;
+    top:0;
+    z-index:999;
+    border-bottom:1px solid #22222c;
+}
+
+.logo{
+    font-size:21px;
+    font-weight:800;
+    color:var(--purple);
+}
+
+.nav-links{
+    display:flex;
+    gap:22px;
+}
+
+.nav-links a{
+    color:#bbb;
+    text-decoration:none;
+    font-size:14px;
+}
+
+.nav-links a:hover{
+    color:white;
+}
+
+.menu{
+    display:none;
+    font-size:25px;
+    cursor:pointer;
+}
+
+/* HERO */
+.hero{
+    min-height:360px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:50px 20px;
+    background:
+    linear-gradient(#08080ccc,#08080cf5),
+    url("https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=1600&q=80");
+    background-size:cover;
+    background-position:center;
+}
+
+.hero h1{
+    font-size:45px;
+    margin-bottom:12px;
+}
+
+.hero p{
+    color:#aaa;
+    margin-bottom:25px;
+}
+
+.search{
+    width:min(680px,90vw);
+    height:55px;
+    display:flex;
+    background:#171720;
+    border:1px solid #33333f;
+    border-radius:9px;
+    overflow:hidden;
+}
+
+.search input{
+    flex:1;
+    border:0;
+    outline:0;
+    padding:0 18px;
+    color:white;
+    background:transparent;
+    font-size:15px;
+}
+
+.search button{
+    width:110px;
+    border:0;
+    background:var(--purple2);
+    color:white;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+/* MAIN */
+.container{
+    width:90%;
+    max-width:1400px;
+    margin:40px auto;
+}
+
+.section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.section-head h2{
+    font-size:23px;
+}
+
+.section-head h2 span{
+    color:var(--purple);
+}
+
+.tabs{
+    display:flex;
+    gap:8px;
+    overflow-x:auto;
+    margin-bottom:28px;
+}
+
+.tab{
+    white-space:nowrap;
+    padding:9px 15px;
+    background:#15151e;
+    border:1px solid #292934;
+    color:#aaa;
+    border-radius:7px;
+    cursor:pointer;
+}
+
+.tab.active,
+.tab:hover{
+    background:var(--purple2);
+    color:white;
+}
+
+/* GRID */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:18px;
+}
+
+.card{
+    background:var(--card);
+    border-radius:8px;
+    overflow:hidden;
+    transition:.25s;
+    cursor:pointer;
+    position:relative;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 10px 30px #000;
+}
+
+.poster{
+    width:100%;
+    height:270px;
+    object-fit:cover;
+    display:block;
+}
+
+.info{
+    padding:12px;
+}
+
+.info h3{
+    font-size:14px;
+    margin-bottom:7px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.info p{
+    color:var(--muted);
+    font-size:11px;
+}
+
+.badge{
+    position:absolute;
+    top:8px;
+    left:8px;
+    background:var(--purple);
+    padding:4px 7px;
+    border-radius:4px;
+    font-size:10px;
+    font-weight:bold;
+}
+
+.favorite{
+    position:absolute;
+    top:8px;
+    right:8px;
+    width:31px;
+    height:31px;
+    border:0;
+    border-radius:50%;
+    background:#000b;
+    color:white;
+    cursor:pointer;
+    font-size:16px;
+}
+
+.favorite.active{
+    color:#ff4d9d;
+}
+
+/* EMPTY */
+.empty{
+    display:none;
+    text-align:center;
+    color:#777;
+    padding:50px;
+}
+
+/* MODAL */
+.modal{
+    position:fixed;
+    inset:0;
+    background:#000c;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:2000;
+    padding:20px;
+}
+
+.modal-box{
+    width:min(850px,95vw);
+    background:#15151d;
+    border:1px solid #292934;
+    border-radius:12px;
+    padding:25px;
+    max-height:90vh;
+    overflow:auto;
+}
+
+.close{
+    float:right;
+    border:0;
+    background:none;
+    color:white;
+    font-size:25px;
+    cursor:pointer;
+}
+
+.modal-content{
+    display:flex;
+    gap:25px;
+}
+
+.modal-content img{
+    width:210px;
+    height:300px;
+    object-fit:cover;
+    border-radius:8px;
+}
+
+.modal-text h2{
+    margin:15px 0;
+}
+
+.modal-text p{
+    color:#aaa;
+    line-height:1.6;
+}
+
+.watch{
+    display:inline-block;
+    margin-top:20px;
+    padding:11px 18px;
+    background:var(--purple2);
+    color:white;
+    text-decoration:none;
+    border-radius:7px;
+}
+
+/* FOOTER */
+footer{
+    margin-top:70px;
+    padding:35px;
+    text-align:center;
+    background:#101016;
+    color:#666;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+    .grid{
+        grid-template-columns:repeat(4,1fr);
+    }
+}
+
+@media(max-width:600px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .menu{
+        display:block;
+    }
+
+    nav{
+        padding:0 5%;
+    }
+
+    .hero{
+        min-height:320px;
+    }
+
+    .hero h1{
+        font-size:31px;
+    }
+
+    .grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:12px;
+    }
+
+    .poster{
+        height:230px;
+    }
+
+    .modal-content{
+        flex-direction:column;
+    }
+
+    .modal-content img{
+        width:160px;
+        height:230px;
+        margin:auto;
+    }
+}
+</style>
 </head>
+
 <body>
-<h1>Hello World!</h1>
-<p>My first GitHub website.</p>
+
+<nav>
+    <div class="logo">Seyha Anime KH</div>
+
+    <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#anime">Anime</a>
+        <a href="#donghua">Donghua</a>
+        <a href="#trending">Trending</a>
+        <a href="#favorites">❤️ Favorites</a>
+    </div>
+
+    <div class="menu">☰</div>
+</nav>
+
+<section class="hero">
+
+    <div>
+        <h1>Find Your Anime</h1>
+        <p>Search Anime & Donghua in one place</p>
+
+        <div class="search">
+            <input
+                id="searchInput"
+                type="text"
+                placeholder="Search anime..."
+                oninput="searchAnime()"
+            >
+
+            <button onclick="searchAnime()">Search</button>
+        </div>
+    </div>
+
+</section>
+
+<main class="container">
+
+    <div class="section-head">
+        <h2>🔥 <span>Trending</span></h2>
+    </div>
+
+    <div class="tabs">
+        <button class="tab active" onclick="filterType('all',this)">All</button>
+        <button class="tab" onclick="filterType('anime',this)">Anime</button>
+        <button class="tab" onclick="filterType('donghua',this)">Donghua</button>
+        <button class="tab" onclick="filterType('latest',this)">Latest</button>
+        <button class="tab" onclick="filterType('favorite',this)">❤️ Favorites</button>
+    </div>
+
+    <div class="grid" id="animeGrid">
+
+        <div class="card"
+             data-name="Solo Leveling"
+             data-type="anime"
+             data-latest="true"
+             onclick="openAnime('Solo Leveling','anime1')">
+
+            <span class="badge">HD</span>
+
+            <button class="favorite"
+                    onclick="toggleFavorite(event,'Solo Leveling')">♡</button>
+
+            <img class="poster"
+                 src="https://picsum.photos/400/600?random=21">
+
+            <div class="info">
+                <h3>Solo Leveling</h3>
+                <p>Anime • 25 Episodes</p>
+            </div>
+        </div>
+
+
+        <div class="card"
+             data-name="One Piece"
+             data-type="anime"
+             onclick="openAnime('One Piece','anime2')">
+
+            <span class="badge">HD</span>
+
+            <button class="favorite"
+                    onclick="toggleFavorite(event,'One Piece')">♡</button>
+
+            <img class="poster"
+                 src="https://picsum.photos/400/600?random=22">
+
+            <div class="info">
+                <h3>One Piece</h3>
+                <p>Anime • 1100+ Episodes</p>
+            </div>
+        </div>
+
+
+        <div class="card"
+             data-name="Demon Slayer"
+             data-type="anime"
+             data-latest="true"
+             onclick="openAnime('Demon Slayer','anime3')">
+
+            <span class="badge">HD</span>
+
+            <button class="favorite"
+                    onclick="toggleFavorite(event,'Demon Slayer')">♡</button>
+
+            <img class="poster"
+                 src="https://picsum.photos/400/600?random=23">
+
+            <div class="info">
+                <h3>Demon Slayer</h3>
+                <p>Anime • 63 Episodes</p>
+            </div>
+        </div>
+
+
+        <div class="card"
+             data-name="Naruto"
+             data-type="anime"
+             onclick="openAnime('Naruto','anime4')">
+
+            <span class="badge">HD</span>
+
+            <button class="favorite"
+                    onclick="toggleFavorite(event,'Naruto')">♡</button>
+
+            <img class="poster"
+                 src="https://picsum.photos/400/600?random=24">
+
+            <div class="info">
+                <h3>Naruto</h3>
+                <p>Anime • 220 Episodes</p>
+            </div>
+        </div>
+
+
+        <div class="card"
+             data-name="Battle Through The Heavens"
+             data-type="donghua"
+             data-latest="true"
+             onclick="openAnime('Battle Through The Heavens','donghua1')">
+
+            <span class="badge">SUB</span>
+
+            <button class="favorite"
+                    onclick="toggleFavorite(event,'Battle Through The Heavens')">♡</button>
+
+            <img class="poster"
+                 src="https://picsum.photos/400/600?random=25">
+
+            <div class="info">
+                <h3>Battle Through The Heavens</h3>
+                <p>Donghua • Ongoing</p>
+            </div>
+        </div>
+
+
+        <div class="card"
+             data-name="Renegade Immortal"
+             data-type="donghua"
+             onclick="openAnime('Renegade Immortal','donghua2')">
+
+            <span class="badge">SUB</span>
+
+            <button class="favorite"
+                    onclick="toggleFavorite(event,'Renegade Immortal')">♡</button>
+
+            <img class="poster"
+                 src="https://picsum.photos/400/600?random=26">
+
+            <div class="info">
+                <h3>Renegade Immortal</h3>
+                <p>Donghua • Ongoing</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="empty" id="empty">
+        No anime found 😭
+    </div>
+
+</main>
+
+
+<!-- DETAIL MODAL -->
+
+<div class="modal" id="modal">
+
+    <div class="modal-box">
+
+        <button class="close" onclick="closeModal()">×</button>
+
+        <div class="modal-content">
+
+            <img id="modalPoster"
+                 src="https://picsum.photos/400/600?random=30">
+
+            <div class="modal-text">
+
+                <h2 id="modalTitle">Anime</h2>
+
+                <p>
+                    Welcome to Seyha Anime KH.
+                    Find information about this anime,
+                    episodes and available official viewing options.
+                </p>
+
+                <a class="watch"
+                   href="#"
+                   onclick="return false;">
+                    ▶ Watch Official
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<footer>
+    Seyha Anime KH © 2026
+</footer>
+
+
+<script>
+
+/* SEARCH */
+
+function searchAnime(){
+
+    const input =
+        document.getElementById("searchInput")
+        .value
+        .toLowerCase()
+        .trim();
+
+    const cards =
+        document.querySelectorAll(".card");
+
+    let found = 0;
+
+    cards.forEach(card => {
+
+        const name =
+            card.dataset.name.toLowerCase();
+
+        if(name.includes(input)){
+
+            card.style.display = "block";
+            found++;
+
+        }else{
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+    document.getElementById("empty").style.display =
+        found === 0 ? "block" : "none";
+}
+
+
+/* FILTER */
+
+function filterType(type,button){
+
+    document
+        .querySelectorAll(".tab")
+        .forEach(x => x.classList.remove("active"));
+
+    button.classList.add("active");
+
+    const cards =
+        document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+
+        let show = false;
+
+        if(type === "all"){
+            show = true;
+        }
+
+        else if(type === "anime"){
+            show = card.dataset.type === "anime";
+        }
+
+        else if(type === "donghua"){
+            show = card.dataset.type === "donghua";
+        }
+
+        else if(type === "latest"){
+            show = card.dataset.latest === "true";
+        }
+
+        else if(type === "favorite"){
+
+            const fav =
+                JSON.parse(
+                    localStorage.getItem("favorites") || "[]"
+                );
+
+            show =
+                fav.includes(card.dataset.name);
+        }
+
+        card.style.display =
+            show ? "block" : "none";
+    });
+}
+
+
+/* FAVORITES */
+
+function toggleFavorite(event,name){
+
+    event.stopPropagation();
+
+    let favorites =
+        JSON.parse(
+            localStorage.getItem("favorites") || "[]"
+        );
+
+    if(favorites.includes(name)){
+
+        favorites =
+            favorites.filter(x => x !== name);
+
+    }else{
+
+        favorites.push(name);
+
+    }
+
+    localStorage.setItem(
+        "favorites",
+        JSON.stringify(favorites)
+    );
+
+    updateFavorites();
+}
+
+
+function updateFavorites(){
+
+    const favorites =
+        JSON.parse(
+            localStorage.getItem("favorites") || "[]"
+        );
+
+    document.querySelectorAll(".card").forEach(card => {
+
+        const btn =
+            card.querySelector(".favorite");
+
+        if(favorites.includes(card.dataset.name)){
+
+            btn.innerHTML = "♥";
+            btn.classList.add("active");
+
+        }else{
+
+            btn.innerHTML = "♡";
+            btn.classList.remove("active");
+
+        }
+
+    });
+}
+
+
+/* DETAILS */
+
+function openAnime(title,id){
+
+    document.getElementById("modalTitle")
+        .textContent = title;
+
+    document.getElementById("modal")
+        .style.display = "flex";
+}
+
+
+function closeModal(){
+
+    document.getElementById("modal")
+        .style.display = "none";
+}
+
+
+document.getElementById("modal")
+    .addEventListener("click",function(e){
+
+        if(e.target === this){
+            closeModal();
+        }
+
+    });
+
+
+updateFavorites();
+
+</script>
+
 </body>
-</html>
+  </html>
