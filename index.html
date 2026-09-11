@@ -2,372 +2,451 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Seyha Anime KH</title>
 
 <style>
+*{box-sizing:border-box;margin:0;padding:0}
 :root{
-    --bg:#08080c;
-    --card:#12121a;
-    --card2:#181820;
-    --purple:#9b4dff;
-    --purple2:#6d28d9;
-    --text:#fff;
-    --muted:#92929f;
+ --bg:#08080d;
+ --bg2:#101018;
+ --card:#15151f;
+ --purple:#9b5cff;
+ --purple2:#742cff;
+ --text:#fff;
+ --muted:#9999a8;
 }
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
 body{
-    background:var(--bg);
-    color:var(--text);
-    font-family:Arial,Helvetica,sans-serif;
+ background:var(--bg);
+ color:var(--text);
+ font-family:Arial,sans-serif;
+ min-height:100vh;
+}
+body::-webkit-scrollbar{width:7px}
+body::-webkit-scrollbar-thumb{
+ background:#6d35d9;
+ border-radius:20px;
 }
 
-/* NAVBAR */
+/* NAV */
 nav{
-    height:65px;
-    background:#101016;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 6%;
-    position:sticky;
-    top:0;
-    z-index:999;
-    border-bottom:1px solid #22222c;
+ height:68px;
+ background:#101016ee;
+ backdrop-filter:blur(14px);
+ border-bottom:1px solid #252532;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ padding:0 5%;
+ position:sticky;
+ top:0;
+ z-index:1000;
 }
-
 .logo{
-    font-size:21px;
-    font-weight:800;
-    color:var(--purple);
+ display:flex;
+ align-items:center;
+ gap:9px;
+ font-size:21px;
+ font-weight:900;
+ color:white;
 }
-
-.nav-links{
-    display:flex;
-    gap:22px;
+.logo-icon{
+ width:37px;
+ height:37px;
+ border-radius:11px;
+ background:linear-gradient(135deg,#b66cff,#6725e8);
+ display:grid;
+ place-items:center;
+ font-size:20px;
+ box-shadow:0 0 22px #792cff66;
 }
-
-.nav-links a{
-    color:#bbb;
-    text-decoration:none;
-    font-size:14px;
+.logo span{color:#a76aff}
+.nav-right{
+ display:flex;
+ align-items:center;
+ gap:14px;
 }
-
-.nav-links a:hover{
-    color:white;
+.lang-small{
+ border:1px solid #353543;
+ background:#171720;
+ color:white;
+ border-radius:8px;
+ padding:8px 11px;
+ cursor:pointer;
 }
-
-.menu{
-    display:none;
-    font-size:25px;
-    cursor:pointer;
+.menu-btn{
+ width:42px;
+ height:42px;
+ border:1px solid #353543;
+ border-radius:9px;
+ background:#171720;
+ color:white;
+ font-size:22px;
+ cursor:pointer;
 }
+.menu-btn:hover{background:#702be2}
 
 /* HERO */
 .hero{
-    min-height:360px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:50px 20px;
-    background:
-    linear-gradient(#08080ccc,#08080cf5),
-    url("https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=1600&q=80");
-    background-size:cover;
-    background-position:center;
+ min-height:390px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ text-align:center;
+ padding:60px 20px;
+ background:
+ linear-gradient(#08080dcc,#08080df5),
+ url("https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=1800&q=85");
+ background-size:cover;
+ background-position:center;
 }
-
 .hero h1{
-    font-size:45px;
-    margin-bottom:12px;
+ font-size:clamp(32px,6vw,58px);
+ font-weight:900;
+ margin-bottom:12px;
 }
-
 .hero p{
-    color:#aaa;
-    margin-bottom:25px;
+ color:#aaa;
+ margin-bottom:27px;
 }
-
 .search{
-    width:min(680px,90vw);
-    height:55px;
-    display:flex;
-    background:#171720;
-    border:1px solid #33333f;
-    border-radius:9px;
-    overflow:hidden;
+ width:min(720px,92vw);
+ height:58px;
+ display:flex;
+ background:#161620;
+ border:1px solid #363642;
+ border-radius:12px;
+ overflow:hidden;
+ box-shadow:0 15px 50px #0008;
 }
-
 .search input{
-    flex:1;
-    border:0;
-    outline:0;
-    padding:0 18px;
-    color:white;
-    background:transparent;
-    font-size:15px;
+ flex:1;
+ border:0;
+ outline:0;
+ background:transparent;
+ color:white;
+ padding:0 18px;
+ font-size:15px;
 }
-
 .search button{
-    width:110px;
-    border:0;
-    background:var(--purple2);
-    color:white;
-    cursor:pointer;
-    font-weight:bold;
+ width:115px;
+ border:0;
+ background:linear-gradient(135deg,#a55dff,#6c29df);
+ color:white;
+ font-weight:bold;
+ cursor:pointer;
 }
 
-/* MAIN */
+/* CONTENT */
 .container{
-    width:90%;
-    max-width:1400px;
-    margin:40px auto;
+ width:90%;
+ max-width:1450px;
+ margin:42px auto;
 }
-
-.section-head{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:20px;
+.section-title{
+ font-size:25px;
+ margin-bottom:20px;
 }
-
-.section-head h2{
-    font-size:23px;
+.section-title span{color:#a768ff}
+.controls{
+ display:flex;
+ gap:8px;
+ overflow-x:auto;
+ padding-bottom:8px;
+ margin-bottom:27px;
 }
-
-.section-head h2 span{
-    color:var(--purple);
-}
-
-.tabs{
-    display:flex;
-    gap:8px;
-    overflow-x:auto;
-    margin-bottom:28px;
-}
-
+.controls::-webkit-scrollbar{height:0}
 .tab{
-    white-space:nowrap;
-    padding:9px 15px;
-    background:#15151e;
-    border:1px solid #292934;
-    color:#aaa;
-    border-radius:7px;
-    cursor:pointer;
+ flex-shrink:0;
+ padding:9px 16px;
+ border-radius:8px;
+ border:1px solid #292936;
+ background:#15151d;
+ color:#aaa;
+ cursor:pointer;
 }
-
-.tab.active,
-.tab:hover{
-    background:var(--purple2);
-    color:white;
+.tab:hover,.tab.active{
+ background:#762de0;
+ color:white;
+ border-color:#8d49ed;
 }
 
 /* GRID */
 .grid{
-    display:grid;
-    grid-template-columns:repeat(6,1fr);
-    gap:18px;
+ display:grid;
+ grid-template-columns:repeat(6,1fr);
+ gap:18px;
 }
-
 .card{
-    background:var(--card);
-    border-radius:8px;
-    overflow:hidden;
-    transition:.25s;
-    cursor:pointer;
-    position:relative;
+ min-width:0;
+ background:var(--card);
+ border:1px solid #20202b;
+ border-radius:10px;
+ overflow:hidden;
+ cursor:pointer;
+ position:relative;
+ opacity:0;
+ transform:translateY(12px);
+ animation:show .45s forwards;
+ transition:.25s;
 }
-
+@keyframes show{
+ to{opacity:1;transform:translateY(0)}
+}
 .card:hover{
-    transform:translateY(-5px);
-    box-shadow:0 10px 30px #000;
+ transform:translateY(-6px);
+ border-color:#7836d8;
+ box-shadow:0 14px 35px #0009;
 }
-
 .poster{
-    width:100%;
-    height:270px;
-    object-fit:cover;
-    display:block;
+ width:100%;
+ height:270px;
+ object-fit:cover;
+ display:block;
+ background:#1b1b25;
 }
+.card-info{padding:12px}
+.card-title{
+ font-size:14px;
+ font-weight:bold;
+ white-space:nowrap;
+ overflow:hidden;
+ text-overflow:ellipsis;
+ margin-bottom:7px;
+}
+.card-meta{
+ color:#9292a1;
+ font-size:11px;
+}
+.rating{
+ color:#ffc857;
+ font-size:11px;
+ margin-top:6px;
+}
+.fav{
+ position:absolute;
+ right:8px;
+ top:8px;
+ width:32px;
+ height:32px;
+ border:0;
+ border-radius:50%;
+ background:#000b;
+ color:white;
+ font-size:17px;
+ cursor:pointer;
+ z-index:2;
+}
+.fav.active{color:#ff4d91}
 
-.info{
-    padding:12px;
+/* LOADING */
+.loading{
+ display:flex;
+ justify-content:center;
+ padding:50px;
+ color:#999;
 }
-
-.info h3{
-    font-size:14px;
-    margin-bottom:7px;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
+.spinner{
+ width:35px;
+ height:35px;
+ border:3px solid #333;
+ border-top-color:#9b5cff;
+ border-radius:50%;
+ animation:spin .8s linear infinite;
 }
-
-.info p{
-    color:var(--muted);
-    font-size:11px;
-}
-
-.badge{
-    position:absolute;
-    top:8px;
-    left:8px;
-    background:var(--purple);
-    padding:4px 7px;
-    border-radius:4px;
-    font-size:10px;
-    font-weight:bold;
-}
-
-.favorite{
-    position:absolute;
-    top:8px;
-    right:8px;
-    width:31px;
-    height:31px;
-    border:0;
-    border-radius:50%;
-    background:#000b;
-    color:white;
-    cursor:pointer;
-    font-size:16px;
-}
-
-.favorite.active{
-    color:#ff4d9d;
-}
+@keyframes spin{to{transform:rotate(360deg)}}
 
 /* EMPTY */
 .empty{
-    display:none;
-    text-align:center;
-    color:#777;
-    padding:50px;
+ text-align:center;
+ color:#777;
+ padding:60px 10px;
+ display:none;
+}
+
+/* DRAWER */
+.overlay{
+ position:fixed;
+ inset:0;
+ background:#0009;
+ z-index:2000;
+ display:none;
+}
+.overlay.show{display:block}
+.drawer{
+ position:fixed;
+ top:0;
+ right:0;
+ height:100%;
+ width:min(330px,88vw);
+ background:#111119;
+ border-left:1px solid #292934;
+ z-index:2100;
+ transform:translateX(100%);
+ transition:.3s ease;
+ padding:22px;
+ box-shadow:-20px 0 60px #0008;
+}
+.drawer.show{transform:translateX(0)}
+.drawer-head{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ margin-bottom:30px;
+}
+.drawer-head h2{font-size:20px}
+.close{
+ background:none;
+ border:0;
+ color:white;
+ font-size:28px;
+ cursor:pointer;
+}
+.drawer-item{
+ width:100%;
+ text-align:left;
+ padding:14px;
+ margin:5px 0;
+ border:0;
+ border-radius:8px;
+ background:transparent;
+ color:#bbb;
+ font-size:15px;
+ cursor:pointer;
+}
+.drawer-item:hover{
+ background:#22202c;
+ color:white;
+}
+.drawer-section{
+ color:#777;
+ font-size:11px;
+ text-transform:uppercase;
+ margin:20px 5px 8px;
+}
+.language-box{
+ display:flex;
+ gap:8px;
+}
+.language-box button{
+ flex:1;
+ padding:11px;
+ border-radius:8px;
+ border:1px solid #343440;
+ background:#191923;
+ color:#bbb;
+ cursor:pointer;
+}
+.language-box button.selected{
+ background:#762de0;
+ color:white;
+ border-color:#9955ff;
 }
 
 /* MODAL */
 .modal{
-    position:fixed;
-    inset:0;
-    background:#000c;
-    display:none;
-    align-items:center;
-    justify-content:center;
-    z-index:2000;
-    padding:20px;
+ position:fixed;
+ inset:0;
+ background:#000c;
+ z-index:3000;
+ display:none;
+ align-items:center;
+ justify-content:center;
+ padding:20px;
 }
-
+.modal.show{display:flex}
 .modal-box{
-    width:min(850px,95vw);
-    background:#15151d;
-    border:1px solid #292934;
-    border-radius:12px;
-    padding:25px;
-    max-height:90vh;
-    overflow:auto;
+ width:min(900px,95vw);
+ max-height:90vh;
+ overflow:auto;
+ background:#14141d;
+ border:1px solid #30303c;
+ border-radius:14px;
+ padding:24px;
 }
-
-.close{
-    float:right;
-    border:0;
-    background:none;
-    color:white;
-    font-size:25px;
-    cursor:pointer;
+.modal-close{
+ float:right;
+ border:0;
+ background:none;
+ color:white;
+ font-size:28px;
+ cursor:pointer;
 }
-
-.modal-content{
-    display:flex;
-    gap:25px;
+.detail{
+ display:flex;
+ gap:25px;
 }
-
-.modal-content img{
-    width:210px;
-    height:300px;
-    object-fit:cover;
-    border-radius:8px;
+.detail img{
+ width:220px;
+ height:320px;
+ object-fit:cover;
+ border-radius:9px;
 }
-
-.modal-text h2{
-    margin:15px 0;
+.detail h2{
+ font-size:28px;
+ margin:30px 0 12px;
 }
-
-.modal-text p{
-    color:#aaa;
-    line-height:1.6;
+.detail p{
+ color:#aaa;
+ line-height:1.7;
 }
-
+.tags{
+ display:flex;
+ gap:7px;
+ flex-wrap:wrap;
+ margin:15px 0;
+}
+.tag{
+ background:#24202f;
+ color:#cbaeff;
+ padding:6px 9px;
+ border-radius:6px;
+ font-size:11px;
+}
+.info-line{
+ color:#aaa;
+ font-size:13px;
+ margin:7px 0;
+}
 .watch{
-    display:inline-block;
-    margin-top:20px;
-    padding:11px 18px;
-    background:var(--purple2);
-    color:white;
-    text-decoration:none;
-    border-radius:7px;
+ display:inline-block;
+ margin-top:18px;
+ padding:12px 18px;
+ background:#762de0;
+ color:white;
+ border-radius:8px;
+ text-decoration:none;
 }
 
 /* FOOTER */
 footer{
-    margin-top:70px;
-    padding:35px;
-    text-align:center;
-    background:#101016;
-    color:#666;
+ margin-top:80px;
+ padding:35px;
+ text-align:center;
+ color:#666;
+ background:#101016;
 }
 
 /* MOBILE */
-@media(max-width:900px){
-    .grid{
-        grid-template-columns:repeat(4,1fr);
-    }
+@media(max-width:1050px){
+ .grid{grid-template-columns:repeat(4,1fr)}
 }
-
-@media(max-width:600px){
-
-    .nav-links{
-        display:none;
-    }
-
-    .menu{
-        display:block;
-    }
-
-    nav{
-        padding:0 5%;
-    }
-
-    .hero{
-        min-height:320px;
-    }
-
-    .hero h1{
-        font-size:31px;
-    }
-
-    .grid{
-        grid-template-columns:repeat(2,1fr);
-        gap:12px;
-    }
-
-    .poster{
-        height:230px;
-    }
-
-    .modal-content{
-        flex-direction:column;
-    }
-
-    .modal-content img{
-        width:160px;
-        height:230px;
-        margin:auto;
-    }
+@media(max-width:700px){
+ .grid{grid-template-columns:repeat(3,1fr);gap:12px}
+ .poster{height:220px}
+}
+@media(max-width:500px){
+ .grid{grid-template-columns:repeat(2,1fr)}
+ .poster{height:245px}
+ .logo{font-size:17px}
+ .lang-small{display:none}
+ .detail{flex-direction:column}
+ .detail img{
+  width:170px;
+  height:245px;
+  margin:auto;
+ }
+ .detail h2{font-size:22px}
 }
 </style>
 </head>
@@ -375,410 +454,679 @@ footer{
 <body>
 
 <nav>
-    <div class="logo">Seyha Anime KH</div>
+ <div class="logo">
+   <div class="logo-icon">✦</div>
+   Seyha <span>Anime KH</span>
+ </div>
 
-    <div class="nav-links">
-        <a href="#">Home</a>
-        <a href="#anime">Anime</a>
-        <a href="#donghua">Donghua</a>
-        <a href="#trending">Trending</a>
-        <a href="#favorites">❤️ Favorites</a>
-    </div>
-
-    <div class="menu">☰</div>
+ <div class="nav-right">
+   <button class="lang-small" id="langSmall" onclick="toggleLanguage()">🇬🇧 EN</button>
+   <button class="menu-btn" onclick="openMenu()">☰</button>
+ </div>
 </nav>
 
 <section class="hero">
+ <div>
+   <h1 id="heroTitle">Find Your Anime</h1>
+   <p id="heroSub">Search thousands of anime titles</p>
 
-    <div>
-        <h1>Find Your Anime</h1>
-        <p>Search Anime & Donghua in one place</p>
-
-        <div class="search">
-            <input
-                id="searchInput"
-                type="text"
-                placeholder="Search anime..."
-                oninput="searchAnime()"
-            >
-
-            <button onclick="searchAnime()">Search</button>
-        </div>
-    </div>
-
+   <div class="search">
+     <input id="searchInput"
+       placeholder="Search anime..."
+       autocomplete="off">
+     <button onclick="searchAnime()" id="searchBtn">Search</button>
+   </div>
+ </div>
 </section>
 
 <main class="container">
 
-    <div class="section-head">
-        <h2>🔥 <span>Trending</span></h2>
-    </div>
+ <h2 class="section-title">
+   🔥 <span id="sectionTitle">Top Anime</span>
+ </h2>
 
-    <div class="tabs">
-        <button class="tab active" onclick="filterType('all',this)">All</button>
-        <button class="tab" onclick="filterType('anime',this)">Anime</button>
-        <button class="tab" onclick="filterType('donghua',this)">Donghua</button>
-        <button class="tab" onclick="filterType('latest',this)">Latest</button>
-        <button class="tab" onclick="filterType('favorite',this)">❤️ Favorites</button>
-    </div>
+ <div class="controls">
+   <button class="tab active" onclick="loadTop(this)">🔥 Top</button>
+   <button class="tab" onclick="loadSeason(this)">🆕 Seasonal</button>
+   <button class="tab" onclick="showFavorites(this)">❤️ Favorites</button>
+ </div>
 
-    <div class="grid" id="animeGrid">
+ <div id="loading" class="loading">
+   <div class="spinner"></div>
+ </div>
 
-        <div class="card"
-             data-name="Solo Leveling"
-             data-type="anime"
-             data-latest="true"
-             onclick="openAnime('Solo Leveling','anime1')">
+ <div id="grid" class="grid"></div>
 
-            <span class="badge">HD</span>
-
-            <button class="favorite"
-                    onclick="toggleFavorite(event,'Solo Leveling')">♡</button>
-
-            <img class="poster"
-                 src="https://picsum.photos/400/600?random=21">
-
-            <div class="info">
-                <h3>Solo Leveling</h3>
-                <p>Anime • 25 Episodes</p>
-            </div>
-        </div>
-
-
-        <div class="card"
-             data-name="One Piece"
-             data-type="anime"
-             onclick="openAnime('One Piece','anime2')">
-
-            <span class="badge">HD</span>
-
-            <button class="favorite"
-                    onclick="toggleFavorite(event,'One Piece')">♡</button>
-
-            <img class="poster"
-                 src="https://picsum.photos/400/600?random=22">
-
-            <div class="info">
-                <h3>One Piece</h3>
-                <p>Anime • 1100+ Episodes</p>
-            </div>
-        </div>
-
-
-        <div class="card"
-             data-name="Demon Slayer"
-             data-type="anime"
-             data-latest="true"
-             onclick="openAnime('Demon Slayer','anime3')">
-
-            <span class="badge">HD</span>
-
-            <button class="favorite"
-                    onclick="toggleFavorite(event,'Demon Slayer')">♡</button>
-
-            <img class="poster"
-                 src="https://picsum.photos/400/600?random=23">
-
-            <div class="info">
-                <h3>Demon Slayer</h3>
-                <p>Anime • 63 Episodes</p>
-            </div>
-        </div>
-
-
-        <div class="card"
-             data-name="Naruto"
-             data-type="anime"
-             onclick="openAnime('Naruto','anime4')">
-
-            <span class="badge">HD</span>
-
-            <button class="favorite"
-                    onclick="toggleFavorite(event,'Naruto')">♡</button>
-
-            <img class="poster"
-                 src="https://picsum.photos/400/600?random=24">
-
-            <div class="info">
-                <h3>Naruto</h3>
-                <p>Anime • 220 Episodes</p>
-            </div>
-        </div>
-
-
-        <div class="card"
-             data-name="Battle Through The Heavens"
-             data-type="donghua"
-             data-latest="true"
-             onclick="openAnime('Battle Through The Heavens','donghua1')">
-
-            <span class="badge">SUB</span>
-
-            <button class="favorite"
-                    onclick="toggleFavorite(event,'Battle Through The Heavens')">♡</button>
-
-            <img class="poster"
-                 src="https://picsum.photos/400/600?random=25">
-
-            <div class="info">
-                <h3>Battle Through The Heavens</h3>
-                <p>Donghua • Ongoing</p>
-            </div>
-        </div>
-
-
-        <div class="card"
-             data-name="Renegade Immortal"
-             data-type="donghua"
-             onclick="openAnime('Renegade Immortal','donghua2')">
-
-            <span class="badge">SUB</span>
-
-            <button class="favorite"
-                    onclick="toggleFavorite(event,'Renegade Immortal')">♡</button>
-
-            <img class="poster"
-                 src="https://picsum.photos/400/600?random=26">
-
-            <div class="info">
-                <h3>Renegade Immortal</h3>
-                <p>Donghua • Ongoing</p>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="empty" id="empty">
-        No anime found 😭
-    </div>
+ <div id="empty" class="empty">
+   No anime found.
+ </div>
 
 </main>
 
+<footer>
+ © 2026 Seyha Anime KH
+</footer>
 
-<!-- DETAIL MODAL -->
+
+<!-- MENU -->
+
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
+<aside class="drawer" id="drawer">
+
+ <div class="drawer-head">
+   <h2>Seyha Anime KH</h2>
+   <button class="close" onclick="closeMenu()">×</button>
+ </div>
+
+ <div class="drawer-section" id="menuLanguage">Language</div>
+
+ <div class="language-box">
+   <button id="enBtn" onclick="setLanguage('en')">
+     🇬🇧 English
+   </button>
+
+   <button id="khBtn" onclick="setLanguage('kh')">
+     🇰🇭 ខ្មែរ
+   </button>
+ </div>
+
+ <div class="drawer-section">Navigation</div>
+
+ <button class="drawer-item" onclick="loadTop();closeMenu()">
+   🔥 <span data-en="Top Anime" data-kh="អានីមេល្បីៗ">Top Anime</span>
+ </button>
+
+ <button class="drawer-item" onclick="loadSeason();closeMenu()">
+   🆕 <span data-en="Seasonal" data-kh="អានីមេរដូវកាល">Seasonal</span>
+ </button>
+
+ <button class="drawer-item" onclick="showFavorites();closeMenu()">
+   ❤️ <span data-en="Favorites" data-kh="ចំណូលចិត្ត">Favorites</span>
+ </button>
+
+ <button class="drawer-item" onclick="scrollToAnime();closeMenu()">
+   🎌 <span data-en="Anime" data-kh="អានីមេ">Anime</span>
+ </button>
+
+</aside>
+
+
+<!-- DETAILS -->
 
 <div class="modal" id="modal">
 
-    <div class="modal-box">
+ <div class="modal-box">
 
-        <button class="close" onclick="closeModal()">×</button>
+   <button class="modal-close" onclick="closeModal()">×</button>
 
-        <div class="modal-content">
+   <div id="detailContent"></div>
 
-            <img id="modalPoster"
-                 src="https://picsum.photos/400/600?random=30">
-
-            <div class="modal-text">
-
-                <h2 id="modalTitle">Anime</h2>
-
-                <p>
-                    Welcome to Seyha Anime KH.
-                    Find information about this anime,
-                    episodes and available official viewing options.
-                </p>
-
-                <a class="watch"
-                   href="#"
-                   onclick="return false;">
-                    ▶ Watch Official
-                </a>
-
-            </div>
-
-        </div>
-
-    </div>
+ </div>
 
 </div>
 
 
-<footer>
-    Seyha Anime KH © 2026
-</footer>
-
-
 <script>
 
-/* SEARCH */
+const API = "https://api.jikan.moe/v4";
 
-function searchAnime(){
+let lang = localStorage.getItem("language") || "en";
+let currentData = [];
+let favorites =
+ JSON.parse(localStorage.getItem("favorites") || "[]");
 
-    const input =
-        document.getElementById("searchInput")
-        .value
-        .toLowerCase()
-        .trim();
 
-    const cards =
-        document.querySelectorAll(".card");
+/* LANGUAGE */
 
-    let found = 0;
+const translations = {
+ en:{
+   hero:"Find Your Anime",
+   sub:"Search thousands of anime titles",
+   search:"Search",
+   top:"Top Anime",
+   no:"No anime found.",
+   language:"Language"
+ },
+ kh:{
+   hero:"ស្វែងរក Anime របស់អ្នក",
+   sub:"ស្វែងរក Anime រាប់ពាន់ចំណងជើង",
+   search:"ស្វែងរក",
+   top:"Anime ល្បីៗ",
+   no:"រកមិនឃើញ Anime ទេ។",
+   language:"ភាសា"
+ }
+};
 
-    cards.forEach(card => {
 
-        const name =
-            card.dataset.name.toLowerCase();
+function setLanguage(value){
 
-        if(name.includes(input)){
+ lang = value;
 
-            card.style.display = "block";
-            found++;
+ localStorage.setItem("language",lang);
 
-        }else{
+ applyLanguage();
 
-            card.style.display = "none";
+ closeMenu();
 
-        }
-
-    });
-
-    document.getElementById("empty").style.display =
-        found === 0 ? "block" : "none";
 }
 
 
-/* FILTER */
+function toggleLanguage(){
 
-function filterType(type,button){
+ setLanguage(lang === "en" ? "kh" : "en");
 
-    document
-        .querySelectorAll(".tab")
-        .forEach(x => x.classList.remove("active"));
+}
 
-    button.classList.add("active");
 
-    const cards =
-        document.querySelectorAll(".card");
+function applyLanguage(){
 
-    cards.forEach(card => {
+ const t = translations[lang];
 
-        let show = false;
+ document.getElementById("heroTitle").textContent=t.hero;
+ document.getElementById("heroSub").textContent=t.sub;
+ document.getElementById("searchBtn").textContent=t.search;
+ document.getElementById("sectionTitle").textContent=t.top;
+ document.getElementById("empty").textContent=t.no;
+ document.getElementById("menuLanguage").textContent=t.language;
 
-        if(type === "all"){
-            show = true;
-        }
+ document.getElementById("langSmall").textContent =
+   lang === "en" ? "🇬🇧 EN" : "🇰🇭 KH";
 
-        else if(type === "anime"){
-            show = card.dataset.type === "anime";
-        }
+ document.querySelectorAll("[data-en]").forEach(el=>{
+   el.textContent=el.dataset[lang];
+ });
 
-        else if(type === "donghua"){
-            show = card.dataset.type === "donghua";
-        }
+ document.getElementById("enBtn")
+   .classList.toggle("selected",lang==="en");
 
-        else if(type === "latest"){
-            show = card.dataset.latest === "true";
-        }
+ document.getElementById("khBtn")
+   .classList.toggle("selected",lang==="kh");
+}
 
-        else if(type === "favorite"){
 
-            const fav =
-                JSON.parse(
-                    localStorage.getItem("favorites") || "[]"
-                );
+applyLanguage();
 
-            show =
-                fav.includes(card.dataset.name);
-        }
 
-        card.style.display =
-            show ? "block" : "none";
-    });
+/* API */
+
+async function api(url){
+
+ const response = await fetch(url);
+
+ if(!response.ok)
+   throw new Error("API error");
+
+ return await response.json();
+
+}
+
+
+/* LOADING */
+
+function loading(show){
+
+ document.getElementById("loading").style.display =
+   show ? "flex" : "none";
+
+}
+
+
+/* TOP ANIME */
+
+async function loadTop(button){
+
+ if(button)activateTab(button);
+
+ loading(true);
+
+ document.getElementById("grid").innerHTML="";
+ document.getElementById("empty").style.display="none";
+
+ try{
+
+   const result =
+     await api(API+"/top/anime?limit=24");
+
+   currentData=result.data || [];
+
+   render(currentData);
+
+ }catch(error){
+
+   showError();
+
+ }
+
+ loading(false);
+}
+
+
+/* SEASON */
+
+async function loadSeason(button){
+
+ if(button)activateTab(button);
+
+ loading(true);
+
+ document.getElementById("grid").innerHTML="";
+ document.getElementById("empty").style.display="none";
+
+ try{
+
+   const result =
+     await api(API+"/seasons/now?limit=24");
+
+   currentData=result.data || [];
+
+   render(currentData);
+
+ }catch(error){
+
+   showError();
+
+ }
+
+ loading(false);
+}
+
+
+/* SEARCH */
+
+let searchTimer;
+
+document.getElementById("searchInput")
+.addEventListener("input",function(){
+
+ clearTimeout(searchTimer);
+
+ const value=this.value.trim();
+
+ if(!value){
+
+   loadTop();
+
+   return;
+
+ }
+
+ searchTimer=setTimeout(()=>searchAnime(value),500);
+
+});
+
+
+async function searchAnime(value){
+
+ value =
+   value ||
+   document.getElementById("searchInput").value.trim();
+
+ if(!value)return;
+
+ loading(true);
+
+ document.getElementById("grid").innerHTML="";
+ document.getElementById("empty").style.display="none";
+
+ try{
+
+   const result =
+     await api(
+       API+"/anime?q="+encodeURIComponent(value)+
+       "&limit=24&sfw=true"
+     );
+
+   currentData=result.data || [];
+
+   render(currentData);
+
+ }catch(error){
+
+   showError();
+
+ }
+
+ loading(false);
+}
+
+
+/* RENDER */
+
+function render(animeList){
+
+ const grid=document.getElementById("grid");
+
+ grid.innerHTML="";
+
+ if(!animeList.length){
+
+   document.getElementById("empty").style.display="block";
+
+   return;
+
+ }
+
+ animeList.forEach((anime,index)=>{
+
+   if(!anime.images?.jpg?.large_image_url)return;
+
+   const card=document.createElement("article");
+
+   card.className="card";
+
+   card.style.animationDelay=(index*0.025)+"s";
+
+   const title =
+     anime.title ||
+     anime.title_english ||
+     "Unknown";
+
+   const episodes =
+     anime.episodes || "?";
+
+   const score =
+     anime.score ? "⭐ "+anime.score : "⭐ N/A";
+
+   const type =
+     anime.type || "Anime";
+
+   const isFav =
+     favorites.includes(anime.mal_id);
+
+   card.innerHTML=`
+
+     <button class="fav ${isFav?"active":""}"
+       onclick="toggleFavorite(event,${anime.mal_id})">
+       ${isFav?"♥":"♡"}
+     </button>
+
+     <img class="poster"
+       loading="lazy"
+       src="${anime.images.jpg.large_image_url}"
+       alt="${escapeHTML(title)}">
+
+     <div class="card-info">
+
+       <div class="card-title">
+         ${escapeHTML(title)}
+       </div>
+
+       <div class="card-meta">
+         ${type} • ${episodes} ${lang==="kh"?"ភាគ":"eps"}
+       </div>
+
+       <div class="rating">
+         ${score}
+       </div>
+
+     </div>
+   `;
+
+   card.onclick=()=>{
+     openDetails(anime.mal_id);
+   };
+
+   grid.appendChild(card);
+
+ });
+
 }
 
 
 /* FAVORITES */
 
-function toggleFavorite(event,name){
+function toggleFavorite(event,id){
 
-    event.stopPropagation();
+ event.stopPropagation();
 
-    let favorites =
-        JSON.parse(
-            localStorage.getItem("favorites") || "[]"
-        );
+ if(favorites.includes(id)){
 
-    if(favorites.includes(name)){
+   favorites=favorites.filter(x=>x!==id);
 
-        favorites =
-            favorites.filter(x => x !== name);
+ }else{
 
-    }else{
+   favorites.push(id);
 
-        favorites.push(name);
+ }
 
-    }
+ localStorage.setItem(
+   "favorites",
+   JSON.stringify(favorites)
+ );
 
-    localStorage.setItem(
-        "favorites",
-        JSON.stringify(favorites)
-    );
+ render(currentData);
 
-    updateFavorites();
 }
 
 
-function updateFavorites(){
+async function showFavorites(button){
 
-    const favorites =
-        JSON.parse(
-            localStorage.getItem("favorites") || "[]"
-        );
+ if(button)activateTab(button);
 
-    document.querySelectorAll(".card").forEach(card => {
+ const all=[];
 
-        const btn =
-            card.querySelector(".favorite");
+ for(const id of favorites){
 
-        if(favorites.includes(card.dataset.name)){
+   try{
 
-            btn.innerHTML = "♥";
-            btn.classList.add("active");
+     const result=
+       await api(API+"/anime/"+id);
 
-        }else{
+     if(result.data)all.push(result.data);
 
-            btn.innerHTML = "♡";
-            btn.classList.remove("active");
+   }catch(e){}
 
-        }
+ }
 
-    });
+ currentData=all;
+
+ render(all);
+
 }
 
 
 /* DETAILS */
 
-function openAnime(title,id){
+async function openDetails(id){
 
-    document.getElementById("modalTitle")
-        .textContent = title;
+ const modal=document.getElementById("modal");
 
-    document.getElementById("modal")
-        .style.display = "flex";
+ const content=document.getElementById("detailContent");
+
+ modal.classList.add("show");
+
+ content.innerHTML=`
+   <div class="loading">
+     <div class="spinner"></div>
+   </div>
+ `;
+
+ try{
+
+   const result=
+     await api(API+"/anime/"+id);
+
+   const a=result.data;
+
+   const title=
+     a.title_english ||
+     a.title;
+
+   const genres=
+     (a.genres||[])
+     .map(g=>`<span class="tag">${escapeHTML(g.name)}</span>`)
+     .join("");
+
+   const synopsis=
+     a.synopsis ||
+     "No synopsis available.";
+
+   content.innerHTML=`
+
+     <div class="detail">
+
+       <img
+         src="${a.images.jpg.large_image_url}"
+         alt="${escapeHTML(title)}">
+
+       <div>
+
+         <h2>${escapeHTML(title)}</h2>
+
+         <div class="info-line">
+           ⭐ Score:
+           ${a.score || "N/A"}
+         </div>
+
+         <div class="info-line">
+           🎬 Episodes:
+           ${a.episodes || "N/A"}
+         </div>
+
+         <div class="info-line">
+           📺 Type:
+           ${a.type || "N/A"}
+         </div>
+
+         <div class="info-line">
+           📅 Year:
+           ${a.year || "N/A"}
+         </div>
+
+         <div class="tags">
+           ${genres}
+         </div>
+
+         <p>${escapeHTML(synopsis)}</p>
+
+         ${
+           a.url
+           ?
+           `<a class="watch"
+              href="${a.url}"
+              target="_blank"
+              rel="noopener">
+              ${lang==="kh"?"មើលព័ត៌មានបន្ថែម":"View on MyAnimeList"}
+            </a>`
+           :
+           ""
+         }
+
+       </div>
+
+     </div>
+   `;
+
+ }catch(error){
+
+   content.innerHTML=
+     "<p>Unable to load anime details.</p>";
+
+ }
+
 }
 
 
 function closeModal(){
 
-    document.getElementById("modal")
-        .style.display = "none";
+ document.getElementById("modal")
+   .classList.remove("show");
+
 }
 
 
 document.getElementById("modal")
-    .addEventListener("click",function(e){
+.addEventListener("click",function(e){
 
-        if(e.target === this){
-            closeModal();
-        }
+ if(e.target===this)closeModal();
 
-    });
+});
 
 
-updateFavorites();
+/* MENU */
+
+function openMenu(){
+
+ document.getElementById("drawer")
+   .classList.add("show");
+
+ document.getElementById("overlay")
+   .classList.add("show");
+
+}
+
+
+function closeMenu(){
+
+ document.getElementById("drawer")
+   .classList.remove("show");
+
+ document.getElementById("overlay")
+   .classList.remove("show");
+
+}
+
+
+/* TABS */
+
+function activateTab(button){
+
+ document.querySelectorAll(".tab")
+   .forEach(x=>x.classList.remove("active"));
+
+ button.classList.add("active");
+
+}
+
+
+/* SCROLL */
+
+function scrollToAnime(){
+
+ window.scrollTo({
+   top:document.querySelector(".container").offsetTop-80,
+   behavior:"smooth"
+ });
+
+}
+
+
+/* ERROR */
+
+function showError(){
+
+ document.getElementById("grid").innerHTML="";
+
+ document.getElementById("empty").style.display="block";
+
+ document.getElementById("empty").textContent =
+   lang==="kh"
+   ? "មិនអាចទាញយកទិន្នន័យ Anime បានទេ។"
+   : "Could not load anime data.";
+
+}
+
+
+/* SECURITY */
+
+function escapeHTML(value){
+
+ return String(value)
+   .replaceAll("&","&amp;")
+   .replaceAll("<","&lt;")
+   .replaceAll(">","&gt;")
+   .replaceAll('"',"&quot;")
+   .replaceAll("'","&#039;");
+
+}
+
+
+/* START */
+
+loadTop();
 
 </script>
 
 </body>
-  </html>
+    </html>
